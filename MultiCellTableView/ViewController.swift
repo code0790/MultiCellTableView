@@ -58,20 +58,34 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = Bundle.main.loadNibNamed(HorizontalTableViewCell.identifier, owner: self, options: nil)?.first as! HorizontalTableViewCell
+            cell.delegate = self
             return cell
             
         case 1:
             let cell = Bundle.main.loadNibNamed(HorizontalTableViewCell.identifier, owner: self, options: nil)?.first as! HorizontalTableViewCell
+            cell.delegate = self
             return cell
             
         case 2:
             let cell = Bundle.main.loadNibNamed(VerticalTableViewCell.identifier, owner: self, options: nil)?.first as! VerticalTableViewCell
+            cell.delegate = self
             return cell
             
         default:
             return UITableViewCell()
         }
     }
-    
-    
+}
+
+extension ViewController: HorizontalTableViewCellCellCommunication {
+    func touchOnHoriZontalCell() {
+        print("Touch on horizontal cell -> Collection cell")
+    }
+}
+
+
+extension ViewController: VerticalTableViewCellCommunication {
+    func touchOnVerticalTableCell() {
+        print("Touch on Vertical cell -> Table cell")
+    }
 }

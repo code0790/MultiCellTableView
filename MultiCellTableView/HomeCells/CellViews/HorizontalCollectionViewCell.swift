@@ -9,7 +9,7 @@
 import UIKit
 
 class HorizontalCollectionViewCell: UICollectionViewCell {
-
+    
     static let identifier:String = "HorizontalCollectionViewCell"
     
     override func awakeFromNib() {

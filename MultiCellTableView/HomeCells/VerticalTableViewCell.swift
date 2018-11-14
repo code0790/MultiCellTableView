@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol VerticalTableViewCellCommunication: class {
+    func touchOnVerticalTableCell()
+}
+
 class VerticalTableViewCell: UITableViewCell {
+
+    weak var delegate: VerticalTableViewCellCommunication?
 
     static let identifier:String = "VerticalTableViewCell"
 
@@ -46,5 +52,8 @@ extension VerticalTableViewCell: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.touchOnVerticalTableCell()
+    }
     
 }

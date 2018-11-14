@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol HorizontalTableViewCellCellCommunication: class {
+    func touchOnHoriZontalCell()
+}
+
 class HorizontalTableViewCell: UITableViewCell {
+
+    weak var delegate: HorizontalTableViewCellCellCommunication?
 
     static let identifier:String = "HorizontalTableViewCell"
     
@@ -38,7 +44,7 @@ extension HorizontalTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected Cell on index path")
+        self.delegate?.touchOnHoriZontalCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
