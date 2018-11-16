@@ -46,7 +46,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             return 150
         case 2:
-            return 150*10
+            return 150*5
         default:
             break
         }
@@ -56,9 +56,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
+            
         case 0:
             let cell = Bundle.main.loadNibNamed(HorizontalTableViewCell.identifier, owner: self, options: nil)?.first as! HorizontalTableViewCell
             cell.delegate = self
+            (cell.collectionView.cellForItem(at: indexPath) as? HorizontalCollectionViewCell)?.delegate = self
             return cell
             
         case 1:
@@ -77,9 +79,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension ViewController: Communication {
+    func buttonPressed() {
+        print("Button Pressed on collection view")
+    }
+}
+
 extension ViewController: HorizontalTableViewCellCellCommunication {
-    func touchOnHoriZontalCell() {
-        print("Touch on horizontal cell -> Collection cell")
+    func touchOnHoriZontalCell(callback: (Bool) -> Void) {
+        print("in the controller")
+        callback(true)
     }
 }
 

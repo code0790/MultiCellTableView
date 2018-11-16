@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HorizontalTableViewCellCellCommunication: class {
-    func touchOnHoriZontalCell()
+    func touchOnHoriZontalCell(callback: (Bool) -> Void)
 }
 
 class HorizontalTableViewCell: UITableViewCell {
@@ -27,13 +27,14 @@ class HorizontalTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
         
-        //Collection View Registering
-        self.collectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
+        //Collection View Class Registering
+        //self.collectionView.register(HorizontalCollectionViewCell.self, forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
+        
+        //Collection View Nib Registering
+        self.collectionView.register(UINib(nibName: HorizontalCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: HorizontalCollectionViewCell.identifier)
     }
-    
 }
 
 
@@ -44,7 +45,16 @@ extension HorizontalTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.touchOnHoriZontalCell()
+        self.delegate?.touchOnHoriZontalCell(callback: {(status: Bool) in
+            print("Inside rec -> \(status)")
+            
+            //Get the cell item and do the changes
+            guard let getCell = collectionView.cellForItem(at: indexPath) as? HorizontalCollectionViewCell else {
+                print("Did not get the cell")
+                return
+            }
+            getCell.cellLable.isHidden = status
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

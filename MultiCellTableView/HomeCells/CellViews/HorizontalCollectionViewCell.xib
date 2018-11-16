@@ -18,9 +18,36 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="191" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the lable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeU-A8-AGT">
+                        <rect key="frame" x="10" y="90" width="171" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="NH6-aN-ZEN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qch-bf-aNf">
+                        <rect key="frame" x="72" y="45" width="46" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="buttonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="gkH-jz-2iC"/>
+                        </connections>
+                    </button>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="MeU-A8-AGT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="IP7-Rm-P9b"/>
+                <constraint firstItem="MeU-A8-AGT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="g0Z-c0-MHw"/>
+                <constraint firstAttribute="trailing" secondItem="MeU-A8-AGT" secondAttribute="trailing" constant="10" id="xOp-17-YKt"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="191" height="220"/>
+            <connections>
+                <outlet property="cellLable" destination="MeU-A8-AGT" id="sys-36-R3x"/>
+            </connections>
             <point key="canvasLocation" x="-154" y="-6"/>
         </collectionViewCell>
     </objects>
