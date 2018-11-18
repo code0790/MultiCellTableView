@@ -8,11 +8,34 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
+    var variable : Foo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Fill Variable a value
+        self.variable = Foo(instruments: [
+            Instrument(id: "1" , changeThis: "One"),
+            Instrument(id: "2" , changeThis: "Two"),
+            Instrument(id: "3" , changeThis: "Three"),
+            Instrument(id: "4" , changeThis: "Four") ])
+        
+        print(self.variable)
+        
+        self.modifyValueTypes()
+    }
+    
+    func modifyValueTypes() {
+        
+        //self.variable?.updateInstrument(forFirst: "3", using: { $0.changeThis = "Navpreet" })
+        self.variable?.instruments[3].changevalue(newV: "jjjjjjj")
+        
+        print(self.variable)
     }
 }
 
